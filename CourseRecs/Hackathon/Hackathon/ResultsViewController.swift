@@ -15,6 +15,7 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var Rec4: UILabel!
     @IBOutlet weak var Rec5: UILabel!
     
+
     
     var minimumOverall: Float = 0.0
     var maximumOverall: Float = 0.0
@@ -27,11 +28,44 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
 
         let results = Model.getInstance().GetTemp(inputArray: [minimumOverall, maximumOverall, minimumDif, maximumDif, minimumHours, maximumHours])
-        Rec1.text = results[0]
-        Rec2.text = results[1]
-        Rec3.text = results[2]
-        Rec4.text = results[3]
-        Rec5.text = results[4]
+        Rec1.text = ""
+        Rec2.text = ""
+        Rec3.text = ""
+        Rec4.text = ""
+        Rec5.text = ""
+        
+        if results.count == 0
+        {
+            Rec1.text = "Your Search"
+            Rec2.text = "Returned No Results"
+            Rec3.text = ""
+            Rec4.text = ""
+            Rec5.text = ""
+        }
+        else
+        {
+            if results.count >= 1
+            {
+                Rec1.text = results[0]
+            }
+            if results.count >= 2
+            {
+                Rec2.text = results[1]
+            }
+            if results.count >= 3
+            {
+                Rec3.text = results[2]
+            }
+            if results.count >= 4
+            {
+                Rec4.text = results[3]
+            }
+            if results.count >= 5
+            {
+                Rec5.text = results[4]
+            }
+        }
+
         
 }
     
